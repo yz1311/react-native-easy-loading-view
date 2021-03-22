@@ -1,17 +1,17 @@
 
 # react-native-easy-loading-view
 
-[![npm downloads](https://img.shields.io/npm/dt/react-native-easy-loading-view.svg)](https://npm.im/react-native-easy-loading-view)
+[![npm downloads](https://img.shields.io/npm/@yz1311/react-native-easy-loading-view.svg)](https://npm.im/@yz1311/react-native-easy-loading-view)
 
-## Preview
+## 预览
 ![](http://imgfile.oytour.com/Upload/Common/App/loading_preview0.gif)
 ![](http://imgfile.oytour.com/Upload/Common/App/loading_preview_new.gif)
 
-## Getting started
+## 开始
 
-`$ npm install react-native-easy-loading-view --save`
+`$ npm install react-native-easy-loading-view react-native-animated-spinkit --save`
 
-## Example
+## 例子
 Check [example](https://github.com/Itangjie/react-native-easy-loading-view/blob/master/example) in the  folder.
 
 ```bash
@@ -20,85 +20,50 @@ $ npm install
 $ react-native run-ios
 ```
 
-## Usage
-edit your project root view,like this(detail please see [example](https://github.com/Itangjie/react-native-easy-loading-view/blob/master/example)): 
+## 用法
+必须在根节点引入Loading组件,在整个项目中只需要且只能引用一个
 ```jsx
-import Loading from 'react-native-easy-loading-view';
+import Loading from '@yz1311/react-native-easy-loading-view';
 render() {
         return (
             <View style={[{flex:1}]}>
                 <App/>
                 <Loading
                     ref={(view)=>{Loading.loadingDidCreate(view)}} // 必须调用
-
-                    top={86} // 如果需要在loading或者hud的时候可以点击导航上面的按钮，建议根据自己导航栏具体高度来设置。如果不需要点击可以不设置
-                    offsetY={-150} // 默认loading 和 hud 会在 去掉top之后高度的中间，如果觉得位置不太合适，可以通着offsetY来调整
-
-                    // loadingDefaultText={''} // loading动画的文字
-                    // loadingTextStyle={{ fontSize : 16, color: 'red' }} // loading动画文字的样式
-                    // loadingImage={require('./screen/loading_2.gif')} // loading动画是显示的gif
-                    // loadingImageStyle={{ width : 100, height : 100 }} // gif 图片样式
-
-                    // hudStyle={{ width : 150, height : 150 }} // hud的全局样式
-                    // hudBackgroundColor={'red'} // hud全局背景色
-                    // hudDefaultText={'努力加载中...'} // hud默认全局文字
-                    // hudTextStyle={{ fontSize : 16, color: 'red' }} // 文字样式
-                    // activityIndicatorSize={'small'} // hud上面的圈圈 small or large
-                    // activityIndicatorColor={'red'} // hud上面圈圈的颜色
-                    // hudCustomImage={require('./screen/loading_2.gif')} // 自定义hud上面的圈圈显示，可以把转的圈圈替换为gif
-                    // hudImageStyle={{ width : 50, height : 50 }} // 自定义hud图片的样式
                 />
             </View>
         );
     }
 ```
-use loading(show or dismiss)
+使用loading(显示或者隐藏)
 ```jsx
-import Loading from 'react-native-easy-loading-view';
+import Loading from '@yz1311/react-native-easy-loading-view';
 
-Loading.showHud(); //显示hud
-Loading.showLoading(); //显示loading
+Loading.showLoading("加载中..."); //显示loading
 
-Loading.dismiss(); // 消失
+Loading.hideLoading(); // 消失
 ```
-### Properties
+### 参数
 
-| Prop  | Default  | Type | Description |
+| 属性  | 默认值  | 类型 | 描述 |
 | :------------ |:---------------:| :---------------:| :-----|
-| top | 0 | `number` | Distance from top of container. |
-| bottom | 0 | `number` | Distance from bottom of container. |
-| offsetY | 0 | `number` | loading or hud y offset. |
-| loadingDefaultText |  | `string` | loading view default display text. |
-| loadingTextStyle | {...} | `style` | loading view display text style. |
-| loadingImage |  | `image` | loading view display gif image. |
-| loadingImageStyle | {...} | `style` | loading view display image style |
-| hudDefaultText |  | `string` | hud view default display text. |
-| hudTextStyle | {...} | `style` | hud view display text style. |
-| hudStyle | {...} | `style` | hud view style. |
-| hudBackgroundColor | 'transparent' | `color` | loading view display image style |
-| hudCustomImage |  | `image` | hud view custom image. |
-| hudImageStyle | {...} | `style` | hud custom image style |
-| activityIndicatorSize | 'small' | `string` | hud view default ActivityIndicator size. |
-| activityIndicatorColor |  | `style` | hud view default ActivityIndicator color |
+| style | null | `style` | 最外层的样式 |
+| backgroundColor | rgba(255,0,0,.1) | `color` | 最外层的背景色 |
+| loadingStyle | 0 | `style` | 加载loading样式 |
+| indicatorSize | 30 | `number` | 加载图标的大小 |
+| indicatorColor | #ffffff | `color` | 加载图标的颜色 |
+| renderIndicator | null | `element` | 加载图标自定义 |
+| indicatorStyle | null | `style` | 加载图标样式 |
+| text | 加载中... | `string` | 加载文字 |
+| textStyle | null | `style` | 加载文字样式 |
 
-### Methods
+### 方法
 
-#### showHud(text, extraTop, bkColor)
+#### showLoading(text)
 
-Parameters:
+参数:
 
-| Name  | Type     | default | Description | optional |
+| 名称  | 类型     | 默认值 |  描述 | 可选 |
 | :---- | :------: | :------: | :--- | :--- |
-| text | `string`   | hudDefaultText | hud view display text | YES |
-| extraTop | `number`   | 0 | hud view extra offset y | YES |
-| bkColor | `string`   | '' | hud view backgroundColor | YES |
-#### showLoading(text, extraTop, bkColor)
-
-Parameters:
-
-| Name  | Type     | default | Description | optional |
-| :---- | :------: | :------: | :--- | :--- |
-| text | `string`   | loadingDefaultText | loading view display text | YES |
-| extraTop | `number`   | 0 | loading view extra offset y | YES |
-| bkColor | `string`   | '' | loading view backgroundColor | YES |
-#### dismiss()
+| text | `string`   | 加载中... | 底部文字 | 是 |
+#### hideLoading()

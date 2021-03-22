@@ -1,14 +1,18 @@
 {
-  "name": "react-native-easy-loading-view",
-  "version": "1.0.1",
+  "name": "@yz1311/react-native-easy-loading-view",
+  "version": "1.0.2",
   "description": "A react native loading view",
   "main": "index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Itangjie/react-native-easy-loading-view.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "react-native",
@@ -19,9 +23,15 @@
     "react-native-easy",
     "react-native-hud"
   ],
+  "devDependencies": {
+    "@types/react": "17.0.3",
+    "@types/react-native": "0.64.0",
+    "react-native-animated-spinkit": "^1.5.2"
+  },
   "author": "tangjie",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "^0.41.2",
+    "react-native-animated-spinkit": "^1.5.2"
   }
 }
