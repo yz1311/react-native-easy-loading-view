@@ -1,6 +1,6 @@
 {
   "name": "@yz1311/react-native-easy-loading-view",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A react native loading view",
   "main": "index.js",
   "types": "types/index.d.ts",
@@ -26,7 +26,8 @@
   "devDependencies": {
     "@types/react": "17.0.3",
     "@types/react-native": "0.64.0",
-    "react-native-animated-spinkit": "^1.5.2"
+    "react-native-animated-spinkit": "^1.5.2",
+    "typescript": "4.2.3"
   },
   "author": "tangjie",
   "license": "MIT",

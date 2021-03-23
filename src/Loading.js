@@ -1,5 +1,6 @@
 /**
  * Created by tangjie on 2018/4/4.
+ * Modified by yz1311 on 2021/3/22
  */
 
 import React, { Component } from 'react';
@@ -8,17 +9,16 @@ import {
     Text,
     View,
 } from 'react-native';
-import { Circle } from 'react-native-animated-spinkit'
+import { Circle } from 'react-native-animated-spinkit';
 
 let loadingView = null;
 
 export default class LoadingView extends Component {
 
-
     static defaultProps = {
-        backgroundColor : 'rgba(255,0,0,.1)',
+        backgroundColor : 'rgba(0,0,0,.2)',
         renderIndicator : null,
-        indicatorSize: 30,
+        indicatorSize: 50,
         indicatorColor: '#ffffff',
         offsetY : 0,
     };
@@ -31,7 +31,6 @@ export default class LoadingView extends Component {
             loadingText : this.props.text,
             extraTop : this.props.offsetY,
         };
-
     }
 
     static loadingDidCreate(ref){
@@ -107,9 +106,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop : 0,
-        padding: 12,
+        padding: 15,
         borderRadius: 6,
-        backgroundColor : '#999999'
+        backgroundColor : '#777777',
+        //文字很短的时候，如果太窄很丑
+        minWidth: 110,
+        minHeight: 110,
     },
     loadingTextStyle :{
         color : '#ffffff',

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import * as React from 'react';
 import {ColorValue, StyleProp, TextStyle, ViewStyle} from "react-native";
 
 interface ILoadingProps {
     style?: StyleProp<ViewStyle>;
     /**
      * 外层的背景色
-     * default: rgba(255,0,0,.1)
+     * default: rgba(0,0,0,.2)
      */
     backgroundColor?: ColorValue;
     /**
@@ -33,6 +33,11 @@ interface ILoadingProps {
     textStyle?: StyleProp<TextStyle>;
 }
 
-export class Loading extends Component<ILoadingProps, any> {
+declare class Loading extends React.Component<ILoadingProps> {
     static defaultProps: Partial<ILoadingProps>;
+    static loadingDidCreate: (view: Loading)=>void;
+    static showLoading: (message:string)=>void;
+    static hideLoading: ()=>void;
 }
+
+export default Loading;
